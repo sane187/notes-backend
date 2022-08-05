@@ -1,4 +1,4 @@
-const notes =require('../Models/model')
+const notes =require('../Models/notesModel')
 
 const getNotes=async(req,res)=>{
     let respObj = {

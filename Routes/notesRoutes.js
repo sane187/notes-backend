@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let notesController=require("../Controllers/contollers")
+let notesController=require("../Controllers/notesControllers")
 // Get Homepage
 router.get('/',notesController.getNotes);
 

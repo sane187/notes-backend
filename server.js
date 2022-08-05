@@ -12,7 +12,8 @@ mongoose.connect(process.env.DB,{ useUnifiedTopology: true,useNewUrlParser: true
 const db=mongoose.connection;
 
 
-const publicRoute =require("./Routes/routes")
+const publicRoute =require("./Routes/notesRoutes")
+const adminRoutes =require("./Routes/adminRoutes")
 const PORT =process.env.PORT
 
 app.use(
@@ -22,6 +23,7 @@ app.use(
   );
 
 app.use('/',publicRoute)
+app.use("/admin", adminRoutes);
 
 
 server.listen(PORT, function() {
