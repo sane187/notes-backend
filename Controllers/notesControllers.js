@@ -12,7 +12,7 @@ const getNotes=async(req,res)=>{
       respObj.IsSuccess = true;
       respObj.Message = "NOTES FOUND successfully";
       res.status(200).json(respObj)
-    }else{   respObj.Message = 'Unable to get notes';
+    }  else{   respObj.Message = 'Unable to get notes';
     res.status(422).json(respObj);}
 
   
