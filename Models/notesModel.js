@@ -14,7 +14,7 @@ const notesModel = mongoose.Schema({
     },
 
     id:{
-        type:Number,
+        type:String,
         required:[true,"Enter Id"],
         unique:true
     },

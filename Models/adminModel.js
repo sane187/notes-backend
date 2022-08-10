@@ -6,6 +6,13 @@ const adminSchema =mongoose.Schema({
     },
     email:{
         type:String,
+        required:[true,"enter name"],
+        unique:true
+    },
+    password:{
+        type:String,
+        required:[true,"enter password"]
+
     }
 })
 

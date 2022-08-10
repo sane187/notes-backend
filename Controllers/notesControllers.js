@@ -69,7 +69,6 @@ const deleteNotes=async(req,res)=>{
         IsSuccess: false
     }
     const id=req.params.id
-
 const updatedData = await notes.findByIdAndDelete(id);
 
 if (updatedData) {

@@ -5,6 +5,8 @@ require("dotenv").config();
 const bodyParser=require("body-parser")
 const mongoose= require("mongoose")
 var server=http.createServer(app)
+let cors = require("cors");
+
 
 // const jwt = require('jsonwebtoken')
 // let bodyParser = require("body-parser");
@@ -21,8 +23,9 @@ app.use(
       limit: "50mb"
     })
   );
+  app.use(cors());
 
-app.use('/',publicRoute)
+app.use('/',publicRoute) 
 app.use("/admin", adminRoutes);
 
 
