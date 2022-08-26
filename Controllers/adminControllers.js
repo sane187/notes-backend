@@ -12,14 +12,16 @@ if(isAdmin){
     respObj.IsSuccess = false;
     respObj.Message = "Admin already registered";
     res.status(404).send(respObj)
-}
+}else{
 let newAdmin =new admin(req.body)
     const result = await newAdmin.save();
+    console.log(result)
     if (result) {
         respObj.IsSuccess = true;
         respObj.Message = "Admin Registered successfully";
+         res.token =generateToken(result._id)
         res.status(200).json(respObj);
-    } }
+    }} }
     catch(err){
         console.error(err);
         respObj.Message = "Server Error.";
@@ -32,17 +34,24 @@ const logIn =async(req,res)=>{
         Data: null,      
         IsSuccess: false
     }
-  const data =await admin.findOne({email:req.body.email})
-
-  if(data){
-    respObj.Data="Logged in Successfully"
-    res.status(200).json(respObj);
-  }
-
-  else{
-    respObj.Data= "Login Attempt Unsuccessful"
-    res.status(404).json(respObj)
-  }
+    try{
+      const data =await admin.findOne({email:req.body.email})
+      if(data){
+        respObj.IsSuccess = true;
+        respObj.Message="Logged in Successfully"
+        res.status(200).json(respObj);
+      } else{
+          respObj.Message= "Login Attempt Unsuccessful Wrong Email"
+          res.status(404).json(respObj)
+        } 
+      
+      }
+      catch(err){
+        respObj.Message = "Server Error.";
+        return res.status(500).json(respObj);
+      }
+ 
+ 
 
 }
 
