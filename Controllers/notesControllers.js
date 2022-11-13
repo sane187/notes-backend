@@ -13,7 +13,7 @@ const getNotes=async(req,res)=>{
       respObj.Message = "NOTES FOUND successfully";
       res.status(200).json(respObj)
     }  else{   respObj.Message = 'Unable to get notes';
-    res.status(422).json(respObj);}
+    res.status(400).json(respObj);}
 
   
    
@@ -25,7 +25,7 @@ const createNotes=async(req,res)=>{
         Message: '',
         IsSuccess: false
     }
-
+try{
 const newNotes= new notes(req.body);
 const result = await newNotes.save();
 
@@ -36,8 +36,14 @@ if (result) {
     res.status(200).json(respObj);
 } else {
     respObj.Message = 'Unable to save notes';
+    res.status(404).json(respObj);
+}
+}
+catch(err){
+    respObj.Message = 'Unable to save notes';
     res.status(422).json(respObj);
 }
+
 }
 
 const updateNotes=async(req,res)=>{
@@ -46,6 +52,7 @@ const updateNotes=async(req,res)=>{
         Message: '',
         IsSuccess: false
     }
+    try{
     const id=req.params.id
     const body=req.body
 
@@ -60,7 +67,11 @@ if (updatedData) {
     respObj.Message = 'Unable to update notes';
     res.status(422).json(respObj);
 }
-
+}
+catch(err){
+    respObj.Message = 'Unable to update notes';
+    res.status(400).json(respObj);
+}
 }
 
 const deleteNotes=async(req,res)=>{

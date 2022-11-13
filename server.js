@@ -7,7 +7,6 @@ const mongoose= require("mongoose")
 var server=http.createServer(app)
 let cors = require("cors");
 
-
 // const jwt = require('jsonwebtoken')
 // let bodyParser = require("body-parser");
 mongoose.connect(process.env.DB,{ useUnifiedTopology: true,useNewUrlParser: true });

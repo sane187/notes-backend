@@ -1,5 +1,9 @@
 const admin =require('../Models/adminModel')
 
+const generateToken =()=>{
+  
+}
+
 const signUp =async(req,res)=>{
     let respObj = {
         Data: null,
